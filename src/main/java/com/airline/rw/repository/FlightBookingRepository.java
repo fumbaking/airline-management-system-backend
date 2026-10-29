@@ -16,4 +16,6 @@ public interface FlightBookingRepository extends JpaRepository<FlightBooking, UU
     List<FlightBooking> findByStatusOrderByFlightDateAsc(FlightBookingStatus status);
 
     List<FlightBooking> findByFlightDateBetweenOrderByFlightDateAsc(LocalDate start, LocalDate end);
+
+    boolean existsByAgentIdAndFlightDateAndStatusNot(UUID agentId, LocalDate flightDate, FlightBookingStatus status);
 }

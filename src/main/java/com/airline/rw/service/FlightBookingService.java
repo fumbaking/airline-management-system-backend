@@ -19,6 +19,18 @@ public class FlightBookingService {
     private FlightBookingRepository flightBookingRepo;
 
     public String saveFlightBooking(FlightBooking flightBooking) {
+        if (flightBooking.getFlightDate().isBefore(LocalDate.now())) {
+            return "Flight booking date cannot be in the past";
+        }
+        if (flightBooking.getAgent() != null && flightBooking.getAgent().getId() != null) {
+            boolean conflict = flightBookingRepo.existsByAgentIdAndFlightDateAndStatusNot(
+                    flightBooking.getAgent().getId(),
+                    flightBooking.getFlightDate(),
+                    FlightBookingStatus.CANCELLED);
+            if (conflict) {
+                return "Agent already has a flight booking on that date";
+            }
+        }
         flightBooking.setStatus(FlightBookingStatus.BOOKED);
         flightBookingRepo.save(flightBooking);
         return "Flight booking saved successfully";
@@ -61,5 +73,25 @@ public class FlightBookingService {
 
     public List<FlightBooking> getFlightBookingsBetween(LocalDate start, LocalDate end) {
         return flightBookingRepo.findByFlightDateBetweenOrderByFlightDateAsc(start, end);
+    }
+
+    public String changeStatus(UUID id, FlightBookingStatus newStatus) {
+        Optional<FlightBooking> existing = flightBookingRepo.findById(id);
+        if (existing.isEmpty()) {
+            return "The flight booking with that id does not exist";
+        }
+        FlightBookingStatus current = existing.get().getStatus();
+        boolean allowed =
+                (current == FlightBookingStatus.BOOKED &&
+                        (newStatus == FlightBookingStatus.PAID || newStatus == FlightBookingStatus.CANCELLED))
+                ||
+                (current == FlightBookingStatus.PAID &&
+                        (newStatus == FlightBookingStatus.CHECKED_IN || newStatus == FlightBookingStatus.CANCELLED));
+        if (!allowed) {
+            return "Cannot change status from " + current + " to " + newStatus;
+        }
+        existing.get().setStatus(newStatus);
+        flightBookingRepo.save(existing.get());
+        return "Flight booking status updated successfully";
     }
 }

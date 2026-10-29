@@ -8,13 +8,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.airline.rw.domain.CheckInAgent;
+import com.airline.rw.domain.Counter;
+import com.airline.rw.domain.Language;
 import com.airline.rw.repository.CheckInAgentRepository;
+import com.airline.rw.repository.CounterRepository;
+import com.airline.rw.repository.LanguageRepository;
 
 @Service
 public class CheckInAgentService {
 
     @Autowired
     private CheckInAgentRepository agentRepo;
+
+    @Autowired
+    private CounterRepository counterRepo;
+
+    @Autowired
+    private LanguageRepository languageRepo;
 
     public String saveCheckInAgent(CheckInAgent agent) {
         agentRepo.save(agent);
@@ -53,5 +63,44 @@ public class CheckInAgentService {
 
     public List<CheckInAgent> getAgentsByLanguage(String name) {
         return agentRepo.findByLanguageName(name);
+    }
+
+    public String addLanguage(UUID checkInAgentId, UUID languageId) {
+        Optional<CheckInAgent> agentOpt = agentRepo.findById(checkInAgentId);
+        if (agentOpt.isEmpty()) {
+            return "The check in agent with that id does not exist";
+        }
+        Optional<Language> languageOpt = languageRepo.findById(languageId);
+        if (languageOpt.isEmpty()) {
+            return "That language does not exist";
+        }
+        CheckInAgent agent = agentOpt.get();
+        Language language = languageOpt.get();
+        if (agent.getLanguages().contains(language)) {
+            return "The check in agent already has that language";
+        }
+        agent.getLanguages().add(language);
+        agentRepo.save(agent);
+        return "Language added to the check in agent";
+    }
+
+    public String moveToCounter(UUID checkInAgentId, int counterNumber) {
+        Optional<CheckInAgent> agentOpt = agentRepo.findById(checkInAgentId);
+        if (agentOpt.isEmpty()) {
+            return "The check in agent with that id does not exist";
+        }
+        Optional<Counter> counterOpt = counterRepo.findByCounterNumber(counterNumber);
+        if (counterOpt.isEmpty()) {
+            return "The counter with that counterNumber does not exist";
+        }
+        Counter counter = counterOpt.get();
+        Optional<CheckInAgent> occupant = agentRepo.findByCounter(counter);
+        if (occupant.isPresent() && !occupant.get().getId().equals(checkInAgentId)) {
+            return "That counter is taken by another check in agent";
+        }
+        CheckInAgent agent = agentOpt.get();
+        agent.setCounter(counter);
+        agentRepo.save(agent);
+        return "Counter changed successfully";
     }
 }

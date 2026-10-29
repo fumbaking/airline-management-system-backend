@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -65,5 +66,29 @@ public class CheckInAgentController {
     @GetMapping("/by-language")
     public ResponseEntity<List<CheckInAgent>> getByLanguage(@RequestParam String name) {
         return new ResponseEntity<>(agentService.getAgentsByLanguage(name), HttpStatus.OK);
+    }
+
+    @PutMapping("/{checkInAgentId}/languages/{languageId}")
+    public ResponseEntity<?> addLanguage(@PathVariable UUID checkInAgentId, @PathVariable UUID languageId) {
+        String message = agentService.addLanguage(checkInAgentId, languageId);
+        if (message.equals("Language added to the check in agent")) {
+            return new ResponseEntity<>(message, HttpStatus.OK);
+        }
+        if (message.equals("The check in agent already has that language")) {
+            return new ResponseEntity<>(message, HttpStatus.CONFLICT);
+        }
+        return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+    }
+
+    @PatchMapping("/{checkInAgentId}/counter")
+    public ResponseEntity<?> moveToCounter(@PathVariable UUID checkInAgentId, @RequestParam int counterNumber) {
+        String message = agentService.moveToCounter(checkInAgentId, counterNumber);
+        if (message.equals("Counter changed successfully")) {
+            return new ResponseEntity<>(message, HttpStatus.OK);
+        }
+        if (message.equals("That counter is taken by another check in agent")) {
+            return new ResponseEntity<>(message, HttpStatus.CONFLICT);
+        }
+        return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
     }
 }

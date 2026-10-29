@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -31,7 +32,13 @@ public class FlightBookingController {
     @PostMapping("/save")
     public ResponseEntity<?> saveFlightBooking(@RequestBody FlightBooking flightBooking) {
         String message = flightBookingService.saveFlightBooking(flightBooking);
-        return new ResponseEntity<>(message, HttpStatus.CREATED);
+        if (message.equals("Flight booking saved successfully")) {
+            return new ResponseEntity<>(message, HttpStatus.CREATED);
+        }
+        if (message.equals("Agent already has a flight booking on that date")) {
+            return new ResponseEntity<>(message, HttpStatus.CONFLICT);
+        }
+        return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
     }
 
     @GetMapping("/all")
@@ -74,5 +81,17 @@ public class FlightBookingController {
         LocalDate startDate = LocalDate.parse(start);
         LocalDate endDate = LocalDate.parse(end);
         return new ResponseEntity<>(flightBookingService.getFlightBookingsBetween(startDate, endDate), HttpStatus.OK);
+    }
+
+    @PatchMapping("/{id}/status")
+    public ResponseEntity<?> changeStatus(@PathVariable UUID id, @RequestParam FlightBookingStatus status) {
+        String message = flightBookingService.changeStatus(id, status);
+        if (message.equals("Flight booking status updated successfully")) {
+            return new ResponseEntity<>(message, HttpStatus.OK);
+        }
+        if (message.equals("The flight booking with that id does not exist")) {
+            return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
     }
 }
