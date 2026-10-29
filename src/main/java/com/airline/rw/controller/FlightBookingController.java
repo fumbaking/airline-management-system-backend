@@ -1,5 +1,6 @@
 package com.airline.rw.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
@@ -13,9 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.airline.rw.domain.FlightBooking;
+import com.airline.rw.domain.FlightBookingStatus;
 import com.airline.rw.service.FlightBookingService;
 
 @RestController
@@ -59,5 +62,17 @@ public class FlightBookingController {
             return new ResponseEntity<>(message, HttpStatus.OK);
         }
         return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/by-status")
+    public ResponseEntity<List<FlightBooking>> getByStatus(@RequestParam FlightBookingStatus status) {
+        return new ResponseEntity<>(flightBookingService.getFlightBookingsByStatus(status), HttpStatus.OK);
+    }
+
+    @GetMapping("/between")
+    public ResponseEntity<List<FlightBooking>> getBetween(@RequestParam String start, @RequestParam String end) {
+        LocalDate startDate = LocalDate.parse(start);
+        LocalDate endDate = LocalDate.parse(end);
+        return new ResponseEntity<>(flightBookingService.getFlightBookingsBetween(startDate, endDate), HttpStatus.OK);
     }
 }

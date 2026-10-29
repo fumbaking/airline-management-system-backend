@@ -1,5 +1,6 @@
 package com.airline.rw.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -52,5 +53,13 @@ public class FlightBookingService {
         }
         flightBookingRepo.deleteById(id);
         return "Flight booking deleted successfully";
+    }
+
+    public List<FlightBooking> getFlightBookingsByStatus(FlightBookingStatus status) {
+        return flightBookingRepo.findByStatusOrderByFlightDateAsc(status);
+    }
+
+    public List<FlightBooking> getFlightBookingsBetween(LocalDate start, LocalDate end) {
+        return flightBookingRepo.findByFlightDateBetweenOrderByFlightDateAsc(start, end);
     }
 }

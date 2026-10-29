@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.airline.rw.domain.Passenger;
@@ -59,5 +60,10 @@ public class PassengerController {
             return new ResponseEntity<>(message, HttpStatus.OK);
         }
         return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/by-last-name")
+    public ResponseEntity<List<Passenger>> getByLastName(@RequestParam String lastName) {
+        return new ResponseEntity<>(passengerService.getPassengersByLastName(lastName), HttpStatus.OK);
     }
 }

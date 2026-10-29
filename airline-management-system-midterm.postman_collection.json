@@ -2,12 +2,12 @@
 	"info": {
 		"_postman_id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
 		"name": "Airline Management System Midterm",
-		"description": "Fumba Huriro | Student ID: 25401 | Part A (A1 + A2)",
+		"description": "Fumba Huriro | Student ID: 25401 | Parts A and B",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "A2 - Save language (201)",
+			"name": "A2 - Save language",
 			"request": {
 				"method": "POST",
 				"header": [{"key":"Content-Type","value":"application/json"}],
@@ -16,28 +16,28 @@
 			}
 		},
 		{
-			"name": "A2 - GET all languages (200)",
+			"name": "A2 - GET all languages",
 			"request": {
 				"method": "GET",
 				"url": {"raw":"http://localhost:8080/api/languages/all","protocol":"http","host":["localhost"],"port":"8080","path":["api","languages","all"]}
 			}
 		},
 		{
-			"name": "A2 - GET language by id (200)",
+			"name": "A2 - GET language by id",
 			"request": {
 				"method": "GET",
 				"url": {"raw":"http://localhost:8080/api/languages/8a015353-d957-4137-acef-4dc4a6209447","protocol":"http","host":["localhost"],"port":"8080","path":["api","languages","8a015353-d957-4137-acef-4dc4a6209447"]}
 			}
 		},
 		{
-			"name": "A2 - GET language by unknown id (404)",
+			"name": "A2 - GET language by unknown id",
 			"request": {
 				"method": "GET",
 				"url": {"raw":"http://localhost:8080/api/languages/00000000-0000-0000-0000-000000000000","protocol":"http","host":["localhost"],"port":"8080","path":["api","languages","00000000-0000-0000-0000-000000000000"]}
 			}
 		},
 		{
-			"name": "A2 - PUT update language (200)",
+			"name": "A2 - PUT update language",
 			"request": {
 				"method": "PUT",
 				"header": [{"key":"Content-Type","value":"application/json"}],
@@ -46,7 +46,14 @@
 			}
 		},
 		{
-			"name": "A2 - Save counter (201)",
+			"name": "A2 - DELETE language unknown id",
+			"request": {
+				"method": "DELETE",
+				"url": {"raw":"http://localhost:8080/api/languages/delete/00000000-0000-0000-0000-000000000000","protocol":"http","host":["localhost"],"port":"8080","path":["api","languages","delete","00000000-0000-0000-0000-000000000000"]}
+			}
+		},
+		{
+			"name": "A2 - Save counter",
 			"request": {
 				"method": "POST",
 				"header": [{"key":"Content-Type","value":"application/json"}],
@@ -55,28 +62,28 @@
 			}
 		},
 		{
-			"name": "A2 - GET all counters (200)",
+			"name": "A2 - GET all counters",
 			"request": {
 				"method": "GET",
 				"url": {"raw":"http://localhost:8080/api/counters/all","protocol":"http","host":["localhost"],"port":"8080","path":["api","counters","all"]}
 			}
 		},
 		{
-			"name": "A2 - GET counter by id (200)",
+			"name": "A2 - GET counter by id",
 			"request": {
 				"method": "GET",
 				"url": {"raw":"http://localhost:8080/api/counters/80f74262-3281-4a3d-b522-f8348fd1a641","protocol":"http","host":["localhost"],"port":"8080","path":["api","counters","80f74262-3281-4a3d-b522-f8348fd1a641"]}
 			}
 		},
 		{
-			"name": "A2 - GET counter by unknown id (404)",
+			"name": "A2 - GET counter by unknown id",
 			"request": {
 				"method": "GET",
 				"url": {"raw":"http://localhost:8080/api/counters/00000000-0000-0000-0000-000000000000","protocol":"http","host":["localhost"],"port":"8080","path":["api","counters","00000000-0000-0000-0000-000000000000"]}
 			}
 		},
 		{
-			"name": "A2 - Save check-in agent (201)",
+			"name": "A2 - Save check-in agent",
 			"request": {
 				"method": "POST",
 				"header": [{"key":"Content-Type","value":"application/json"}],
@@ -85,28 +92,28 @@
 			}
 		},
 		{
-			"name": "A2 - GET all check-in agents (200)",
+			"name": "A2 - GET all check-in agents",
 			"request": {
 				"method": "GET",
 				"url": {"raw":"http://localhost:8080/api/check-in-agents/all","protocol":"http","host":["localhost"],"port":"8080","path":["api","check-in-agents","all"]}
 			}
 		},
 		{
-			"name": "A2 - GET check-in agent by id (200)",
+			"name": "A2 - GET check-in agent by id",
 			"request": {
 				"method": "GET",
 				"url": {"raw":"http://localhost:8080/api/check-in-agents/01bacc8e-3ec6-461f-9fbe-2612e11f1a30","protocol":"http","host":["localhost"],"port":"8080","path":["api","check-in-agents","01bacc8e-3ec6-461f-9fbe-2612e11f1a30"]}
 			}
 		},
 		{
-			"name": "A2 - GET check-in agent by unknown id (404)",
+			"name": "A2 - GET check-in agent by unknown id",
 			"request": {
 				"method": "GET",
 				"url": {"raw":"http://localhost:8080/api/check-in-agents/00000000-0000-0000-0000-000000000000","protocol":"http","host":["localhost"],"port":"8080","path":["api","check-in-agents","00000000-0000-0000-0000-000000000000"]}
 			}
 		},
 		{
-			"name": "A2 - Save passenger (201)",
+			"name": "A2 - Save passenger",
 			"request": {
 				"method": "POST",
 				"header": [{"key":"Content-Type","value":"application/json"}],
@@ -115,37 +122,28 @@
 			}
 		},
 		{
-			"name": "A2 - GET all passengers (200)",
+			"name": "A2 - GET all passengers",
 			"request": {
 				"method": "GET",
 				"url": {"raw":"http://localhost:8080/api/passengers/all","protocol":"http","host":["localhost"],"port":"8080","path":["api","passengers","all"]}
 			}
 		},
 		{
-			"name": "A2 - GET passenger by id (200)",
+			"name": "A2 - GET passenger by id",
 			"request": {
 				"method": "GET",
 				"url": {"raw":"http://localhost:8080/api/passengers/f0a26336-44b8-47c2-b5b9-6d1ccaae12bb","protocol":"http","host":["localhost"],"port":"8080","path":["api","passengers","f0a26336-44b8-47c2-b5b9-6d1ccaae12bb"]}
 			}
 		},
 		{
-			"name": "A2 - GET passenger by unknown id (404)",
+			"name": "A2 - GET passenger by unknown id",
 			"request": {
 				"method": "GET",
 				"url": {"raw":"http://localhost:8080/api/passengers/00000000-0000-0000-0000-000000000000","protocol":"http","host":["localhost"],"port":"8080","path":["api","passengers","00000000-0000-0000-0000-000000000000"]}
 			}
 		},
 		{
-			"name": "A2 - PUT update passenger (200)",
-			"request": {
-				"method": "PUT",
-				"header": [{"key":"Content-Type","value":"application/json"}],
-				"body": {"mode":"raw","raw":"{\n  \"firstName\": \"Jean\",\n  \"lastName\": \"Niyonzima\",\n  \"passportNumber\": \"PC654321\",\n  \"email\": \"jean.updated@example.com\",\n  \"phone\": \"+250780000001\"\n}"},
-				"url": {"raw":"http://localhost:8080/api/passengers/update/f0a26336-44b8-47c2-b5b9-6d1ccaae12bb","protocol":"http","host":["localhost"],"port":"8080","path":["api","passengers","update","f0a26336-44b8-47c2-b5b9-6d1ccaae12bb"]}
-			}
-		},
-		{
-			"name": "A2 - Save flight booking (201)",
+			"name": "A2 - Save flight booking",
 			"request": {
 				"method": "POST",
 				"header": [{"key":"Content-Type","value":"application/json"}],
@@ -154,28 +152,28 @@
 			}
 		},
 		{
-			"name": "A2 - GET all flight bookings (200)",
+			"name": "A2 - GET all flight bookings",
 			"request": {
 				"method": "GET",
 				"url": {"raw":"http://localhost:8080/api/flight-bookings/all","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","all"]}
 			}
 		},
 		{
-			"name": "A2 - GET flight booking by id (200)",
+			"name": "A2 - GET flight booking by id",
 			"request": {
 				"method": "GET",
 				"url": {"raw":"http://localhost:8080/api/flight-bookings/e4b8c78d-0dec-46c9-accb-7f49e3875c99","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","e4b8c78d-0dec-46c9-accb-7f49e3875c99"]}
 			}
 		},
 		{
-			"name": "A2 - GET flight booking by unknown id (404)",
+			"name": "A2 - GET flight booking by unknown id",
 			"request": {
 				"method": "GET",
 				"url": {"raw":"http://localhost:8080/api/flight-bookings/00000000-0000-0000-0000-000000000000","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","00000000-0000-0000-0000-000000000000"]}
 			}
 		},
 		{
-			"name": "A2 - PUT update flight booking (200)",
+			"name": "A2 - PUT update flight booking",
 			"request": {
 				"method": "PUT",
 				"header": [{"key":"Content-Type","value":"application/json"}],
@@ -184,10 +182,52 @@
 			}
 		},
 		{
-			"name": "A2 - DELETE flight booking by unknown id (404)",
+			"name": "A2 - DELETE flight booking unknown id",
 			"request": {
 				"method": "DELETE",
 				"url": {"raw":"http://localhost:8080/api/flight-bookings/delete/00000000-0000-0000-0000-000000000000","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","delete","00000000-0000-0000-0000-000000000000"]}
+			}
+		},
+		{
+			"name": "B1 - Passengers by lastName niyonzima",
+			"request": {
+				"method": "GET",
+				"url": {"raw":"http://localhost:8080/api/passengers/by-last-name?lastName=niyonzima","protocol":"http","host":["localhost"],"port":"8080","path":["api","passengers","by-last-name"],"query":[{"key":"lastName","value":"niyonzima"}]}
+			}
+		},
+		{
+			"name": "B1 - Passengers by lastName no match",
+			"request": {
+				"method": "GET",
+				"url": {"raw":"http://localhost:8080/api/passengers/by-last-name?lastName=ZZZNOMATCH","protocol":"http","host":["localhost"],"port":"8080","path":["api","passengers","by-last-name"],"query":[{"key":"lastName","value":"ZZZNOMATCH"}]}
+			}
+		},
+		{
+			"name": "B2 - Flight bookings by status BOOKED",
+			"request": {
+				"method": "GET",
+				"url": {"raw":"http://localhost:8080/api/flight-bookings/by-status?status=BOOKED","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","by-status"],"query":[{"key":"status","value":"BOOKED"}]}
+			}
+		},
+		{
+			"name": "B2 - Flight bookings by status CHECKED_IN",
+			"request": {
+				"method": "GET",
+				"url": {"raw":"http://localhost:8080/api/flight-bookings/by-status?status=CHECKED_IN","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","by-status"],"query":[{"key":"status","value":"CHECKED_IN"}]}
+			}
+		},
+		{
+			"name": "B3 - Bookings between 2026-10-01 and 2026-10-31",
+			"request": {
+				"method": "GET",
+				"url": {"raw":"http://localhost:8080/api/flight-bookings/between?start=2026-10-01&end=2026-10-31","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","between"],"query":[{"key":"start","value":"2026-10-01"},{"key":"end","value":"2026-10-31"}]}
+			}
+		},
+		{
+			"name": "B3 - Bookings between 2026-11-01 and 2026-11-30",
+			"request": {
+				"method": "GET",
+				"url": {"raw":"http://localhost:8080/api/flight-bookings/between?start=2026-11-01&end=2026-11-30","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","between"],"query":[{"key":"start","value":"2026-11-01"},{"key":"end","value":"2026-11-30"}]}
 			}
 		}
 	]
