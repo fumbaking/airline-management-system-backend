@@ -48,4 +48,8 @@ public class CounterService {
         counterRepo.deleteById(id);
         return "Counter deleted successfully";
     }
+
+    public List<Counter> getFreeCounters() {
+        return counterRepo.findFreeCounters();
+    }
 }

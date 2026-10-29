@@ -60,4 +60,9 @@ public class LanguageController {
         }
         return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
     }
+
+    @GetMapping("/unused")
+    public ResponseEntity<List<Language>> getUnusedLanguages() {
+        return new ResponseEntity<>(languageService.getUnusedLanguages(), HttpStatus.OK);
+    }
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.airline.rw.domain.CheckInAgent;
@@ -59,5 +60,10 @@ public class CheckInAgentController {
             return new ResponseEntity<>(message, HttpStatus.OK);
         }
         return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/by-language")
+    public ResponseEntity<List<CheckInAgent>> getByLanguage(@RequestParam String name) {
+        return new ResponseEntity<>(agentService.getAgentsByLanguage(name), HttpStatus.OK);
     }
 }

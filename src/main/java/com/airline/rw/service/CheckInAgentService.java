@@ -50,4 +50,8 @@ public class CheckInAgentService {
         agentRepo.deleteById(id);
         return "Check in agent deleted successfully";
     }
+
+    public List<CheckInAgent> getAgentsByLanguage(String name) {
+        return agentRepo.findByLanguageName(name);
+    }
 }

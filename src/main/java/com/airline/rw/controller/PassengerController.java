@@ -66,4 +66,13 @@ public class PassengerController {
     public ResponseEntity<List<Passenger>> getByLastName(@RequestParam String lastName) {
         return new ResponseEntity<>(passengerService.getPassengersByLastName(lastName), HttpStatus.OK);
     }
+
+    @GetMapping("/of-check-in-agent/{checkInAgentId}")
+    public ResponseEntity<?> getPassengersOfAgent(@PathVariable UUID checkInAgentId) {
+        Object result = passengerService.getPassengersOfAgent(checkInAgentId);
+        if (result instanceof String) {
+            return new ResponseEntity<>(result, HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
 }

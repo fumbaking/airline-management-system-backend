@@ -47,4 +47,8 @@ public class LanguageService {
         languageRepo.deleteById(id);
         return "Language deleted successfully";
     }
+
+    public List<Language> getUnusedLanguages() {
+        return languageRepo.findUnusedLanguages();
+    }
 }

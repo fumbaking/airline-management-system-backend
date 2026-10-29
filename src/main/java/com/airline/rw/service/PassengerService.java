@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.airline.rw.domain.Passenger;
+import com.airline.rw.repository.CheckInAgentRepository;
 import com.airline.rw.repository.PassengerRepository;
 
 @Service
@@ -15,6 +16,9 @@ public class PassengerService {
 
     @Autowired
     private PassengerRepository passengerRepo;
+
+    @Autowired
+    private CheckInAgentRepository agentRepo;
 
     public String savePassenger(Passenger passenger) {
         passengerRepo.save(passenger);
@@ -54,5 +58,12 @@ public class PassengerService {
 
     public List<Passenger> getPassengersByLastName(String lastName) {
         return passengerRepo.findByLastNameIgnoreCaseOrderByFirstNameAsc(lastName);
+    }
+
+    public Object getPassengersOfAgent(UUID agentId) {
+        if (agentRepo.findById(agentId).isEmpty()) {
+            return "The check in agent with that id does not exist";
+        }
+        return passengerRepo.findPassengersOfAgent(agentId);
     }
 }
