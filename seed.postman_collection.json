@@ -1,0 +1,302 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+		"name": "Airline Management System - SEED DATA",
+		"description": "Fumba Huriro 25401. All agent/language/counter IDs hardcoded. Only passenger IDs use variables (set by test scripts). Send requests 15-35 in order manually.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "01 GET all languages (verify - already in DB)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": { "raw": "http://localhost:8080/api/languages/all", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api","languages","all"] }
+			}
+		},
+		{
+			"name": "02 GET all counters (verify - already in DB)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": { "raw": "http://localhost:8080/api/counters/all", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api","counters","all"] }
+			}
+		},
+		{
+			"name": "03 GET all agents (verify - already in DB)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": { "raw": "http://localhost:8080/api/check-in-agents/all", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api","check-in-agents","all"] }
+			}
+		},
+		{
+			"name": "04 Agent1 gets English (hardcoded IDs)",
+			"event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["pm.test('200', function(){ pm.response.to.have.status(200); });"] } }],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/check-in-agents/01bacc8e-3ec6-461f-9fbe-2612e11f1a30/languages/8a015353-d957-4137-acef-4dc4a6209447",
+					"protocol": "http", "host": ["localhost"], "port": "8080",
+					"path": ["api","check-in-agents","01bacc8e-3ec6-461f-9fbe-2612e11f1a30","languages","8a015353-d957-4137-acef-4dc4a6209447"]
+				}
+			}
+		},
+		{
+			"name": "05 Agent1 gets French (hardcoded IDs - now has 2 languages)",
+			"event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["pm.test('200', function(){ pm.response.to.have.status(200); });"] } }],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/check-in-agents/01bacc8e-3ec6-461f-9fbe-2612e11f1a30/languages/3690ebce-d6a5-48c0-bd41-bfa182259faa",
+					"protocol": "http", "host": ["localhost"], "port": "8080",
+					"path": ["api","check-in-agents","01bacc8e-3ec6-461f-9fbe-2612e11f1a30","languages","3690ebce-d6a5-48c0-bd41-bfa182259faa"]
+				}
+			}
+		},
+		{
+			"name": "06 Agent2 gets Kinyarwanda (hardcoded IDs - exactly 1 language)",
+			"event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["pm.test('200', function(){ pm.response.to.have.status(200); });"] } }],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/check-in-agents/704c4525-ca9d-44e2-b0dc-35815613d5ef/languages/bca45391-b1ed-4898-b97a-1faa00899e8e",
+					"protocol": "http", "host": ["localhost"], "port": "8080",
+					"path": ["api","check-in-agents","704c4525-ca9d-44e2-b0dc-35815613d5ef","languages","bca45391-b1ed-4898-b97a-1faa00899e8e"]
+				}
+			}
+		},
+		{
+			"name": "07 Save Passenger1 Jean Niyonzima PC654321",
+			"event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["var j=pm.response.json(); if(j.id){pm.environment.set('p1',j.id);} pm.test('201',function(){pm.response.to.have.status(201);});"] } }],
+			"request": {
+				"method": "POST",
+				"header": [{"key":"Content-Type","value":"application/json"}],
+				"body": { "mode": "raw", "raw": "{\n  \"firstName\": \"Jean\",\n  \"lastName\": \"Niyonzima\",\n  \"passportNumber\": \"PC654321\",\n  \"email\": \"jean.niyonzima@example.com\",\n  \"phone\": \"+250780000001\"\n}" },
+				"url": { "raw": "http://localhost:8080/api/passengers/save", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api","passengers","save"] }
+			}
+		},
+		{
+			"name": "08 Save Passenger2 Aline Niyonzima PC123456",
+			"event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["var j=pm.response.json(); if(j.id){pm.environment.set('p2',j.id);} pm.test('201',function(){pm.response.to.have.status(201);});"] } }],
+			"request": {
+				"method": "POST",
+				"header": [{"key":"Content-Type","value":"application/json"}],
+				"body": { "mode": "raw", "raw": "{\n  \"firstName\": \"Aline\",\n  \"lastName\": \"Niyonzima\",\n  \"passportNumber\": \"PC123456\",\n  \"email\": \"aline.niyonzima@example.com\",\n  \"phone\": \"+250780000002\"\n}" },
+				"url": { "raw": "http://localhost:8080/api/passengers/save", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api","passengers","save"] }
+			}
+		},
+		{
+			"name": "09 Save Passenger3 Eric Ndayisaba PC111111",
+			"event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["var j=pm.response.json(); if(j.id){pm.environment.set('p3',j.id);} pm.test('201',function(){pm.response.to.have.status(201);});"] } }],
+			"request": {
+				"method": "POST",
+				"header": [{"key":"Content-Type","value":"application/json"}],
+				"body": { "mode": "raw", "raw": "{\n  \"firstName\": \"Eric\",\n  \"lastName\": \"Ndayisaba\",\n  \"passportNumber\": \"PC111111\",\n  \"email\": \"eric.ndayisaba@example.com\",\n  \"phone\": \"+250780000003\"\n}" },
+				"url": { "raw": "http://localhost:8080/api/passengers/save", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api","passengers","save"] }
+			}
+		},
+		{
+			"name": "10 Save Passenger4 Diane Uwera PC222222",
+			"event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["var j=pm.response.json(); if(j.id){pm.environment.set('p4',j.id);} pm.test('201',function(){pm.response.to.have.status(201);});"] } }],
+			"request": {
+				"method": "POST",
+				"header": [{"key":"Content-Type","value":"application/json"}],
+				"body": { "mode": "raw", "raw": "{\n  \"firstName\": \"Diane\",\n  \"lastName\": \"Uwera\",\n  \"passportNumber\": \"PC222222\",\n  \"email\": \"diane.uwera@example.com\",\n  \"phone\": \"+250780000004\"\n}" },
+				"url": { "raw": "http://localhost:8080/api/passengers/save", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api","passengers","save"] }
+			}
+		},
+		{
+			"name": "11 Save Passenger5 Frank Mugabo PC333333",
+			"event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["var j=pm.response.json(); if(j.id){pm.environment.set('p5',j.id);} pm.test('201',function(){pm.response.to.have.status(201);});"] } }],
+			"request": {
+				"method": "POST",
+				"header": [{"key":"Content-Type","value":"application/json"}],
+				"body": { "mode": "raw", "raw": "{\n  \"firstName\": \"Frank\",\n  \"lastName\": \"Mugabo\",\n  \"passportNumber\": \"PC333333\",\n  \"email\": \"frank.mugabo@example.com\",\n  \"phone\": \"+250780000005\"\n}" },
+				"url": { "raw": "http://localhost:8080/api/passengers/save", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api","passengers","save"] }
+			}
+		},
+		{
+			"name": "12 Booking1 Jean/Agent1 2026-10-29 (->CHECKED_IN)",
+			"event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["var j=pm.response.json(); if(j.id){pm.environment.set('b1',j.id);} pm.test('201',function(){pm.response.to.have.status(201);});"] } }],
+			"request": {
+				"method": "POST",
+				"header": [{"key":"Content-Type","value":"application/json"}],
+				"body": { "mode": "raw", "raw": "{\n  \"flightDate\": \"2026-10-29\",\n  \"flightNumber\": \"RW101\",\n  \"seatClass\": \"Economy\",\n  \"passenger\": { \"id\": \"{{p1}}\" },\n  \"agent\": { \"id\": \"01bacc8e-3ec6-461f-9fbe-2612e11f1a30\" }\n}" },
+				"url": { "raw": "http://localhost:8080/api/flight-bookings/save", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api","flight-bookings","save"] }
+			}
+		},
+		{
+			"name": "13 Booking2 Aline/Agent2 2026-10-30 (->CHECKED_IN)",
+			"event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["var j=pm.response.json(); if(j.id){pm.environment.set('b2',j.id);} pm.test('201',function(){pm.response.to.have.status(201);});"] } }],
+			"request": {
+				"method": "POST",
+				"header": [{"key":"Content-Type","value":"application/json"}],
+				"body": { "mode": "raw", "raw": "{\n  \"flightDate\": \"2026-10-30\",\n  \"flightNumber\": \"RW102\",\n  \"seatClass\": \"Business\",\n  \"passenger\": { \"id\": \"{{p2}}\" },\n  \"agent\": { \"id\": \"704c4525-ca9d-44e2-b0dc-35815613d5ef\" }\n}" },
+				"url": { "raw": "http://localhost:8080/api/flight-bookings/save", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api","flight-bookings","save"] }
+			}
+		},
+		{
+			"name": "14 Booking3 Eric/Agent1 2026-11-01 (will be CANCELLED)",
+			"event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["var j=pm.response.json(); if(j.id){pm.environment.set('b3',j.id);} pm.test('201',function(){pm.response.to.have.status(201);});"] } }],
+			"request": {
+				"method": "POST",
+				"header": [{"key":"Content-Type","value":"application/json"}],
+				"body": { "mode": "raw", "raw": "{\n  \"flightDate\": \"2026-11-01\",\n  \"flightNumber\": \"RW103\",\n  \"seatClass\": \"Economy\",\n  \"passenger\": { \"id\": \"{{p3}}\" },\n  \"agent\": { \"id\": \"01bacc8e-3ec6-461f-9fbe-2612e11f1a30\" }\n}" },
+				"url": { "raw": "http://localhost:8080/api/flight-bookings/save", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api","flight-bookings","save"] }
+			}
+		},
+		{
+			"name": "15 CANCEL Booking3 (frees Agent1 on 2026-11-01)",
+			"event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["pm.test('200',function(){pm.response.to.have.status(200);});"] } }],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/flight-bookings/{{b3}}/status?status=CANCELLED",
+					"protocol": "http", "host": ["localhost"], "port": "8080",
+					"path": ["api","flight-bookings","{{b3}}","status"],
+					"query": [{"key":"status","value":"CANCELLED"}]
+				}
+			}
+		},
+		{
+			"name": "16 Booking4 Diane/Agent1 2026-11-01 (Agent1 now has CANCELLED+BOOKED same date)",
+			"event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["var j=pm.response.json(); if(j.id){pm.environment.set('b4',j.id);} pm.test('201',function(){pm.response.to.have.status(201);});"] } }],
+			"request": {
+				"method": "POST",
+				"header": [{"key":"Content-Type","value":"application/json"}],
+				"body": { "mode": "raw", "raw": "{\n  \"flightDate\": \"2026-11-01\",\n  \"flightNumber\": \"RW104\",\n  \"seatClass\": \"Business\",\n  \"passenger\": { \"id\": \"{{p4}}\" },\n  \"agent\": { \"id\": \"01bacc8e-3ec6-461f-9fbe-2612e11f1a30\" }\n}" },
+				"url": { "raw": "http://localhost:8080/api/flight-bookings/save", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api","flight-bookings","save"] }
+			}
+		},
+		{
+			"name": "17 Booking5 Jean/Agent2 2026-11-05 (passenger1 booking2)",
+			"event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["var j=pm.response.json(); if(j.id){pm.environment.set('b5',j.id);} pm.test('201',function(){pm.response.to.have.status(201);});"] } }],
+			"request": {
+				"method": "POST",
+				"header": [{"key":"Content-Type","value":"application/json"}],
+				"body": { "mode": "raw", "raw": "{\n  \"flightDate\": \"2026-11-05\",\n  \"flightNumber\": \"RW105\",\n  \"seatClass\": \"Economy\",\n  \"passenger\": { \"id\": \"{{p1}}\" },\n  \"agent\": { \"id\": \"704c4525-ca9d-44e2-b0dc-35815613d5ef\" }\n}" },
+				"url": { "raw": "http://localhost:8080/api/flight-bookings/save", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api","flight-bookings","save"] }
+			}
+		},
+		{
+			"name": "18 Booking6 Frank/Agent3 2026-11-10",
+			"event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["var j=pm.response.json(); if(j.id){pm.environment.set('b6',j.id);} pm.test('201',function(){pm.response.to.have.status(201);});"] } }],
+			"request": {
+				"method": "POST",
+				"header": [{"key":"Content-Type","value":"application/json"}],
+				"body": { "mode": "raw", "raw": "{\n  \"flightDate\": \"2026-11-10\",\n  \"flightNumber\": \"RW106\",\n  \"seatClass\": \"Business\",\n  \"passenger\": { \"id\": \"{{p5}}\" },\n  \"agent\": { \"id\": \"ec4540f4-93ae-434c-9ecd-8be6f1277a43\" }\n}" },
+				"url": { "raw": "http://localhost:8080/api/flight-bookings/save", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api","flight-bookings","save"] }
+			}
+		},
+		{
+			"name": "19 Booking7 Aline/Agent3 2026-11-12",
+			"event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["var j=pm.response.json(); if(j.id){pm.environment.set('b7',j.id);} pm.test('201',function(){pm.response.to.have.status(201);});"] } }],
+			"request": {
+				"method": "POST",
+				"header": [{"key":"Content-Type","value":"application/json"}],
+				"body": { "mode": "raw", "raw": "{\n  \"flightDate\": \"2026-11-12\",\n  \"flightNumber\": \"RW107\",\n  \"seatClass\": \"Economy\",\n  \"passenger\": { \"id\": \"{{p2}}\" },\n  \"agent\": { \"id\": \"ec4540f4-93ae-434c-9ecd-8be6f1277a43\" }\n}" },
+				"url": { "raw": "http://localhost:8080/api/flight-bookings/save", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api","flight-bookings","save"] }
+			}
+		},
+		{
+			"name": "20 Booking8 Eric/Agent2 2026-11-15 (->PAID)",
+			"event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["var j=pm.response.json(); if(j.id){pm.environment.set('b8',j.id);} pm.test('201',function(){pm.response.to.have.status(201);});"] } }],
+			"request": {
+				"method": "POST",
+				"header": [{"key":"Content-Type","value":"application/json"}],
+				"body": { "mode": "raw", "raw": "{\n  \"flightDate\": \"2026-11-15\",\n  \"flightNumber\": \"RW108\",\n  \"seatClass\": \"Economy\",\n  \"passenger\": { \"id\": \"{{p3}}\" },\n  \"agent\": { \"id\": \"704c4525-ca9d-44e2-b0dc-35815613d5ef\" }\n}" },
+				"url": { "raw": "http://localhost:8080/api/flight-bookings/save", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api","flight-bookings","save"] }
+			}
+		},
+		{
+			"name": "21 Booking9 Jean/Agent3 2026-11-20 (passenger1 booking3)",
+			"event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["var j=pm.response.json(); if(j.id){pm.environment.set('b9',j.id);} pm.test('201',function(){pm.response.to.have.status(201);});"] } }],
+			"request": {
+				"method": "POST",
+				"header": [{"key":"Content-Type","value":"application/json"}],
+				"body": { "mode": "raw", "raw": "{\n  \"flightDate\": \"2026-11-20\",\n  \"flightNumber\": \"RW109\",\n  \"seatClass\": \"Business\",\n  \"passenger\": { \"id\": \"{{p1}}\" },\n  \"agent\": { \"id\": \"ec4540f4-93ae-434c-9ecd-8be6f1277a43\" }\n}" },
+				"url": { "raw": "http://localhost:8080/api/flight-bookings/save", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api","flight-bookings","save"] }
+			}
+		},
+		{
+			"name": "22 Booking10 Diane/Agent2 2026-11-25",
+			"event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["var j=pm.response.json(); if(j.id){pm.environment.set('b10',j.id);} pm.test('201',function(){pm.response.to.have.status(201);});"] } }],
+			"request": {
+				"method": "POST",
+				"header": [{"key":"Content-Type","value":"application/json"}],
+				"body": { "mode": "raw", "raw": "{\n  \"flightDate\": \"2026-11-25\",\n  \"flightNumber\": \"RW110\",\n  \"seatClass\": \"Economy\",\n  \"passenger\": { \"id\": \"{{p4}}\" },\n  \"agent\": { \"id\": \"704c4525-ca9d-44e2-b0dc-35815613d5ef\" }\n}" },
+				"url": { "raw": "http://localhost:8080/api/flight-bookings/save", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api","flight-bookings","save"] }
+			}
+		},
+		{
+			"name": "23 Booking1 -> PAID",
+			"event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["pm.test('200',function(){pm.response.to.have.status(200);});"] } }],
+			"request": {
+				"method": "PATCH", "header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/flight-bookings/{{b1}}/status?status=PAID",
+					"protocol": "http", "host": ["localhost"], "port": "8080",
+					"path": ["api","flight-bookings","{{b1}}","status"],
+					"query": [{"key":"status","value":"PAID"}]
+				}
+			}
+		},
+		{
+			"name": "24 Booking1 -> CHECKED_IN",
+			"event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["pm.test('200',function(){pm.response.to.have.status(200);});"] } }],
+			"request": {
+				"method": "PATCH", "header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/flight-bookings/{{b1}}/status?status=CHECKED_IN",
+					"protocol": "http", "host": ["localhost"], "port": "8080",
+					"path": ["api","flight-bookings","{{b1}}","status"],
+					"query": [{"key":"status","value":"CHECKED_IN"}]
+				}
+			}
+		},
+		{
+			"name": "25 Booking2 -> PAID",
+			"event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["pm.test('200',function(){pm.response.to.have.status(200);});"] } }],
+			"request": {
+				"method": "PATCH", "header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/flight-bookings/{{b2}}/status?status=PAID",
+					"protocol": "http", "host": ["localhost"], "port": "8080",
+					"path": ["api","flight-bookings","{{b2}}","status"],
+					"query": [{"key":"status","value":"PAID"}]
+				}
+			}
+		},
+		{
+			"name": "26 Booking2 -> CHECKED_IN",
+			"event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["pm.test('200',function(){pm.response.to.have.status(200);});"] } }],
+			"request": {
+				"method": "PATCH", "header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/flight-bookings/{{b2}}/status?status=CHECKED_IN",
+					"protocol": "http", "host": ["localhost"], "port": "8080",
+					"path": ["api","flight-bookings","{{b2}}","status"],
+					"query": [{"key":"status","value":"CHECKED_IN"}]
+				}
+			}
+		},
+		{
+			"name": "27 Booking8 -> PAID (covers PAID status)",
+			"event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["pm.test('200',function(){pm.response.to.have.status(200);});"] } }],
+			"request": {
+				"method": "PATCH", "header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/flight-bookings/{{b8}}/status?status=PAID",
+					"protocol": "http", "host": ["localhost"], "port": "8080",
+					"path": ["api","flight-bookings","{{b8}}","status"],
+					"query": [{"key":"status","value":"PAID"}]
+				}
+			}
+		}
+	]
+}

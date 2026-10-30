@@ -94,11 +94,10 @@ public class CheckInAgentService {
             return "The counter with that counterNumber does not exist";
         }
         Counter counter = counterOpt.get();
-        Optional<CheckInAgent> occupant = agentRepo.findByCounter(counter);
-        if (occupant.isPresent() && !occupant.get().getId().equals(checkInAgentId)) {
+        CheckInAgent agent = agentOpt.get();
+        if (!counter.equals(agent.getCounter()) && agentRepo.existsByCounter(counter)) {
             return "That counter is taken by another check in agent";
         }
-        CheckInAgent agent = agentOpt.get();
         agent.setCounter(counter);
         agentRepo.save(agent);
         return "Counter changed successfully";

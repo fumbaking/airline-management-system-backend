@@ -7,7 +7,12 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import com.airline.rw.domain.FlightBooking;
 import com.airline.rw.domain.FlightBookingStatus;
 import com.airline.rw.repository.BaggageItemRepository;
@@ -101,5 +106,24 @@ public class FlightBookingService {
         existing.get().setStatus(newStatus);
         flightBookingRepo.save(existing.get());
         return "Flight booking status updated successfully";
+    }
+
+    public List<Object[]> countByStatus() {
+        return flightBookingRepo.countByStatus();
+    }
+
+    @Transactional
+    public String cancelAgentDay(UUID agentId, LocalDate date) {
+        int cancelled = flightBookingRepo.cancelAgentDay(agentId, date);
+        return cancelled + " flight bookings cancelled";
+    }
+
+    public Page<FlightBooking> getFlightBookingsPage(int page, int size, String sort) {
+        String[] parts = sort.split(",");
+        String field = parts[0];
+        Sort.Direction direction = parts.length > 1 && parts[1].equalsIgnoreCase("desc")
+                ? Sort.Direction.DESC : Sort.Direction.ASC;
+        Pageable pageable = PageRequest.of(page, size, Sort.by(direction, field));
+        return flightBookingRepo.findAll(pageable);
     }
 }

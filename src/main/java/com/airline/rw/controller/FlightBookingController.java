@@ -97,4 +97,23 @@ public class FlightBookingController {
         }
         return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
     }
+
+    @GetMapping("/stats/by-status")
+    public ResponseEntity<List<Object[]>> getStatsByStatus() {
+        return new ResponseEntity<>(flightBookingService.countByStatus(), HttpStatus.OK);
+    }
+
+    @PatchMapping("/cancel-day")
+    public ResponseEntity<?> cancelAgentDay(@RequestParam UUID checkInAgentId, @RequestParam String date) {
+        String message = flightBookingService.cancelAgentDay(checkInAgentId, LocalDate.parse(date));
+        return new ResponseEntity<>(message, HttpStatus.OK);
+    }
+
+    @GetMapping("/page")
+    public ResponseEntity<org.springframework.data.domain.Page<FlightBooking>> getPage(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size,
+            @RequestParam(defaultValue = "flightDate,asc") String sort) {
+        return new ResponseEntity<>(flightBookingService.getFlightBookingsPage(page, size, sort), HttpStatus.OK);
+    }
 }

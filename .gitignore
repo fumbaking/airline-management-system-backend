@@ -1,0 +1,8 @@
+target/
+.vscode/
+*.class
+*.log
+maven-output.txt
+db_out.txt
+ids.txt
+*.bat
