@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.airline.rw.domain.FlightBooking;
 import com.airline.rw.domain.FlightBookingStatus;
+import com.airline.rw.repository.BaggageItemRepository;
 import com.airline.rw.repository.FlightBookingRepository;
 
 @Service
@@ -17,6 +18,9 @@ public class FlightBookingService {
 
     @Autowired
     private FlightBookingRepository flightBookingRepo;
+
+    @Autowired
+    private BaggageItemRepository baggageItemRepo;
 
     public String saveFlightBooking(FlightBooking flightBooking) {
         if (flightBooking.getFlightDate().isBefore(LocalDate.now())) {
@@ -60,8 +64,12 @@ public class FlightBookingService {
     }
 
     public String deleteFlightBooking(UUID id) {
-        if (flightBookingRepo.findById(id).isEmpty()) {
+        Optional<FlightBooking> existing = flightBookingRepo.findById(id);
+        if (existing.isEmpty()) {
             return "The flight booking with that id does not exist";
+        }
+        if (baggageItemRepo.existsByFlightBooking(existing.get())) {
+            return "That flight booking has baggage items, delete them first";
         }
         flightBookingRepo.deleteById(id);
         return "Flight booking deleted successfully";

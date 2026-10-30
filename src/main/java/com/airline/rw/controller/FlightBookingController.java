@@ -68,6 +68,9 @@ public class FlightBookingController {
         if (message.equals("Flight booking deleted successfully")) {
             return new ResponseEntity<>(message, HttpStatus.OK);
         }
+        if (message.equals("That flight booking has baggage items, delete them first")) {
+            return new ResponseEntity<>(message, HttpStatus.CONFLICT);
+        }
         return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
     }
 

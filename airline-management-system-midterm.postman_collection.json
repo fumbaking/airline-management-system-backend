@@ -2,197 +2,63 @@
 	"info": {
 		"_postman_id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
 		"name": "Airline Management System Midterm",
-		"description": "Fumba Huriro | Student ID: 25401 | Parts A, B, C and D",
+		"description": "Fumba Huriro | Student ID: 25401 | Parts A, B, C, D and E",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
-		{
-			"name": "A2 - Save language",
-			"request": { "method": "POST", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\n  \"name\": \"English\"\n}"}, "url": {"raw":"http://localhost:8080/api/languages/save","protocol":"http","host":["localhost"],"port":"8080","path":["api","languages","save"]} }
-		},
-		{
-			"name": "A2 - GET all languages",
-			"request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/languages/all","protocol":"http","host":["localhost"],"port":"8080","path":["api","languages","all"]} }
-		},
-		{
-			"name": "A2 - GET language by id",
-			"request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/languages/8a015353-d957-4137-acef-4dc4a6209447","protocol":"http","host":["localhost"],"port":"8080","path":["api","languages","8a015353-d957-4137-acef-4dc4a6209447"]} }
-		},
-		{
-			"name": "A2 - GET language by unknown id",
-			"request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/languages/00000000-0000-0000-0000-000000000000","protocol":"http","host":["localhost"],"port":"8080","path":["api","languages","00000000-0000-0000-0000-000000000000"]} }
-		},
-		{
-			"name": "A2 - PUT update language",
-			"request": { "method": "PUT", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\n  \"name\": \"English Updated\"\n}"}, "url": {"raw":"http://localhost:8080/api/languages/update/8a015353-d957-4137-acef-4dc4a6209447","protocol":"http","host":["localhost"],"port":"8080","path":["api","languages","update","8a015353-d957-4137-acef-4dc4a6209447"]} }
-		},
-		{
-			"name": "A2 - DELETE language unknown id",
-			"request": { "method": "DELETE", "url": {"raw":"http://localhost:8080/api/languages/delete/00000000-0000-0000-0000-000000000000","protocol":"http","host":["localhost"],"port":"8080","path":["api","languages","delete","00000000-0000-0000-0000-000000000000"]} }
-		},
-		{
-			"name": "A2 - Save counter",
-			"request": { "method": "POST", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\n  \"counterNumber\": 1,\n  \"name\": \"Counter One\"\n}"}, "url": {"raw":"http://localhost:8080/api/counters/save","protocol":"http","host":["localhost"],"port":"8080","path":["api","counters","save"]} }
-		},
-		{
-			"name": "A2 - GET all counters",
-			"request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/counters/all","protocol":"http","host":["localhost"],"port":"8080","path":["api","counters","all"]} }
-		},
-		{
-			"name": "A2 - GET counter by id",
-			"request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/counters/80f74262-3281-4a3d-b522-f8348fd1a641","protocol":"http","host":["localhost"],"port":"8080","path":["api","counters","80f74262-3281-4a3d-b522-f8348fd1a641"]} }
-		},
-		{
-			"name": "A2 - GET counter by unknown id",
-			"request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/counters/00000000-0000-0000-0000-000000000000","protocol":"http","host":["localhost"],"port":"8080","path":["api","counters","00000000-0000-0000-0000-000000000000"]} }
-		},
-		{
-			"name": "A2 - Save check-in agent",
-			"request": { "method": "POST", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\n  \"firstName\": \"Alice\",\n  \"lastName\": \"Mukamana\",\n  \"staffNumber\": \"SA001\",\n  \"counter\": {\"id\": \"80f74262-3281-4a3d-b522-f8348fd1a641\"}\n}"}, "url": {"raw":"http://localhost:8080/api/check-in-agents/save","protocol":"http","host":["localhost"],"port":"8080","path":["api","check-in-agents","save"]} }
-		},
-		{
-			"name": "A2 - GET all check-in agents",
-			"request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/check-in-agents/all","protocol":"http","host":["localhost"],"port":"8080","path":["api","check-in-agents","all"]} }
-		},
-		{
-			"name": "A2 - GET check-in agent by id",
-			"request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/check-in-agents/01bacc8e-3ec6-461f-9fbe-2612e11f1a30","protocol":"http","host":["localhost"],"port":"8080","path":["api","check-in-agents","01bacc8e-3ec6-461f-9fbe-2612e11f1a30"]} }
-		},
-		{
-			"name": "A2 - GET check-in agent by unknown id",
-			"request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/check-in-agents/00000000-0000-0000-0000-000000000000","protocol":"http","host":["localhost"],"port":"8080","path":["api","check-in-agents","00000000-0000-0000-0000-000000000000"]} }
-		},
-		{
-			"name": "A2 - Save passenger",
-			"request": { "method": "POST", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\n  \"firstName\": \"Jean\",\n  \"lastName\": \"Niyonzima\",\n  \"passportNumber\": \"PC654321\",\n  \"email\": \"jean@example.com\",\n  \"phone\": \"+250780000001\"\n}"}, "url": {"raw":"http://localhost:8080/api/passengers/save","protocol":"http","host":["localhost"],"port":"8080","path":["api","passengers","save"]} }
-		},
-		{
-			"name": "A2 - GET all passengers",
-			"request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/passengers/all","protocol":"http","host":["localhost"],"port":"8080","path":["api","passengers","all"]} }
-		},
-		{
-			"name": "A2 - GET passenger by id",
-			"request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/passengers/f0a26336-44b8-47c2-b5b9-6d1ccaae12bb","protocol":"http","host":["localhost"],"port":"8080","path":["api","passengers","f0a26336-44b8-47c2-b5b9-6d1ccaae12bb"]} }
-		},
-		{
-			"name": "A2 - GET passenger by unknown id",
-			"request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/passengers/00000000-0000-0000-0000-000000000000","protocol":"http","host":["localhost"],"port":"8080","path":["api","passengers","00000000-0000-0000-0000-000000000000"]} }
-		},
-		{
-			"name": "A2 - Save flight booking",
-			"request": { "method": "POST", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\n  \"flightDate\": \"2026-12-05\",\n  \"flightNumber\": \"RW999\",\n  \"seatClass\": \"Economy\",\n  \"passenger\": {\"id\": \"38a22723-f127-4900-bdd6-07832b5c743b\"},\n  \"agent\": {\"id\": \"ec4540f4-93ae-434c-9ecd-8be6f1277a43\"}\n}"}, "url": {"raw":"http://localhost:8080/api/flight-bookings/save","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","save"]} }
-		},
-		{
-			"name": "A2 - GET all flight bookings",
-			"request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/flight-bookings/all","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","all"]} }
-		},
-		{
-			"name": "A2 - GET flight booking by id",
-			"request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/flight-bookings/e4b8c78d-0dec-46c9-accb-7f49e3875c99","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","e4b8c78d-0dec-46c9-accb-7f49e3875c99"]} }
-		},
-		{
-			"name": "A2 - GET flight booking by unknown id",
-			"request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/flight-bookings/00000000-0000-0000-0000-000000000000","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","00000000-0000-0000-0000-000000000000"]} }
-		},
-		{
-			"name": "A2 - PUT update flight booking",
-			"request": { "method": "PUT", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\n  \"flightDate\": \"2026-11-25\",\n  \"flightNumber\": \"RW110-UPD\",\n  \"seatClass\": \"Business\",\n  \"passenger\": {\"id\": \"092502c2-e5c6-4a4d-aab1-e68272055a9c\"},\n  \"agent\": {\"id\": \"704c4525-ca9d-44e2-b0dc-35815613d5ef\"}\n}"}, "url": {"raw":"http://localhost:8080/api/flight-bookings/update/dd3c401c-cb64-41aa-ae97-ea61e76c09ff","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","update","dd3c401c-cb64-41aa-ae97-ea61e76c09ff"]} }
-		},
-		{
-			"name": "A2 - DELETE flight booking unknown id",
-			"request": { "method": "DELETE", "url": {"raw":"http://localhost:8080/api/flight-bookings/delete/00000000-0000-0000-0000-000000000000","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","delete","00000000-0000-0000-0000-000000000000"]} }
-		},
-		{
-			"name": "B1 - Passengers by lastName niyonzima",
-			"request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/passengers/by-last-name?lastName=niyonzima","protocol":"http","host":["localhost"],"port":"8080","path":["api","passengers","by-last-name"],"query":[{"key":"lastName","value":"niyonzima"}]} }
-		},
-		{
-			"name": "B1 - Passengers by lastName no match",
-			"request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/passengers/by-last-name?lastName=ZZZNOMATCH","protocol":"http","host":["localhost"],"port":"8080","path":["api","passengers","by-last-name"],"query":[{"key":"lastName","value":"ZZZNOMATCH"}]} }
-		},
-		{
-			"name": "B2 - Flight bookings by status BOOKED",
-			"request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/flight-bookings/by-status?status=BOOKED","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","by-status"],"query":[{"key":"status","value":"BOOKED"}]} }
-		},
-		{
-			"name": "B2 - Flight bookings by status CHECKED_IN",
-			"request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/flight-bookings/by-status?status=CHECKED_IN","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","by-status"],"query":[{"key":"status","value":"CHECKED_IN"}]} }
-		},
-		{
-			"name": "B3 - Bookings between 2026-10-01 and 2026-10-31",
-			"request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/flight-bookings/between?start=2026-10-01&end=2026-10-31","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","between"],"query":[{"key":"start","value":"2026-10-01"},{"key":"end","value":"2026-10-31"}]} }
-		},
-		{
-			"name": "B3 - Bookings between 2026-11-01 and 2026-11-30",
-			"request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/flight-bookings/between?start=2026-11-01&end=2026-11-30","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","between"],"query":[{"key":"start","value":"2026-11-01"},{"key":"end","value":"2026-11-30"}]} }
-		},
-		{
-			"name": "C1 - Check-in agents by language french",
-			"request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/check-in-agents/by-language?name=french","protocol":"http","host":["localhost"],"port":"8080","path":["api","check-in-agents","by-language"],"query":[{"key":"name","value":"french"}]} }
-		},
-		{
-			"name": "C1 - Check-in agents by language ENGLISH",
-			"request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/check-in-agents/by-language?name=ENGLISH","protocol":"http","host":["localhost"],"port":"8080","path":["api","check-in-agents","by-language"],"query":[{"key":"name","value":"ENGLISH"}]} }
-		},
-		{
-			"name": "C2 - Free counters",
-			"request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/counters/free","protocol":"http","host":["localhost"],"port":"8080","path":["api","counters","free"]} }
-		},
-		{
-			"name": "C3 - Unused languages",
-			"request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/languages/unused","protocol":"http","host":["localhost"],"port":"8080","path":["api","languages","unused"]} }
-		},
-		{
-			"name": "C4 - Passengers of check-in agent",
-			"request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/passengers/of-check-in-agent/01bacc8e-3ec6-461f-9fbe-2612e11f1a30","protocol":"http","host":["localhost"],"port":"8080","path":["api","passengers","of-check-in-agent","01bacc8e-3ec6-461f-9fbe-2612e11f1a30"]} }
-		},
-		{
-			"name": "C4 - Passengers of check-in agent unknown id",
-			"request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/passengers/of-check-in-agent/00000000-0000-0000-0000-000000000000","protocol":"http","host":["localhost"],"port":"8080","path":["api","passengers","of-check-in-agent","00000000-0000-0000-0000-000000000000"]} }
-		},
-		{
-			"name": "D1 - Save booking past date",
-			"request": { "method": "POST", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\n  \"flightDate\": \"2025-01-01\",\n  \"flightNumber\": \"RW000\",\n  \"seatClass\": \"Economy\",\n  \"passenger\": {\"id\": \"38a22723-f127-4900-bdd6-07832b5c743b\"},\n  \"agent\": {\"id\": \"ec4540f4-93ae-434c-9ecd-8be6f1277a43\"}\n}"}, "url": {"raw":"http://localhost:8080/api/flight-bookings/save","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","save"]} }
-		},
-		{
-			"name": "D1 - Save booking agent conflict same date",
-			"request": { "method": "POST", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\n  \"flightDate\": \"2026-11-01\",\n  \"flightNumber\": \"RW-CONFLICT\",\n  \"seatClass\": \"Economy\",\n  \"passenger\": {\"id\": \"38a22723-f127-4900-bdd6-07832b5c743b\"},\n  \"agent\": {\"id\": \"01bacc8e-3ec6-461f-9fbe-2612e11f1a30\"}\n}"}, "url": {"raw":"http://localhost:8080/api/flight-bookings/save","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","save"]} }
-		},
-		{
-			"name": "D2 - Change status BOOKED to PAID",
-			"request": { "method": "PATCH", "url": {"raw":"http://localhost:8080/api/flight-bookings/8af8b93d-0fec-4e40-93a0-84f948090050/status?status=PAID","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","8af8b93d-0fec-4e40-93a0-84f948090050","status"],"query":[{"key":"status","value":"PAID"}]} }
-		},
-		{
-			"name": "D2 - Change status invalid transition CHECKED_IN to BOOKED",
-			"request": { "method": "PATCH", "url": {"raw":"http://localhost:8080/api/flight-bookings/e4b8c78d-0dec-46c9-accb-7f49e3875c99/status?status=BOOKED","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","e4b8c78d-0dec-46c9-accb-7f49e3875c99","status"],"query":[{"key":"status","value":"BOOKED"}]} }
-		},
-		{
-			"name": "D2 - Change status unknown id",
-			"request": { "method": "PATCH", "url": {"raw":"http://localhost:8080/api/flight-bookings/00000000-0000-0000-0000-000000000000/status?status=PAID","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","00000000-0000-0000-0000-000000000000","status"],"query":[{"key":"status","value":"PAID"}]} }
-		},
-		{
-			"name": "D3 - Add language to agent",
-			"request": { "method": "PUT", "url": {"raw":"http://localhost:8080/api/check-in-agents/ec4540f4-93ae-434c-9ecd-8be6f1277a43/languages/251eabf5-f915-4c59-a673-0410770b9f4f","protocol":"http","host":["localhost"],"port":"8080","path":["api","check-in-agents","ec4540f4-93ae-434c-9ecd-8be6f1277a43","languages","251eabf5-f915-4c59-a673-0410770b9f4f"]} }
-		},
-		{
-			"name": "D3 - Add language agent already has it",
-			"request": { "method": "PUT", "url": {"raw":"http://localhost:8080/api/check-in-agents/01bacc8e-3ec6-461f-9fbe-2612e11f1a30/languages/8a015353-d957-4137-acef-4dc4a6209447","protocol":"http","host":["localhost"],"port":"8080","path":["api","check-in-agents","01bacc8e-3ec6-461f-9fbe-2612e11f1a30","languages","8a015353-d957-4137-acef-4dc4a6209447"]} }
-		},
-		{
-			"name": "D3 - Add language agent not found",
-			"request": { "method": "PUT", "url": {"raw":"http://localhost:8080/api/check-in-agents/00000000-0000-0000-0000-000000000000/languages/8a015353-d957-4137-acef-4dc4a6209447","protocol":"http","host":["localhost"],"port":"8080","path":["api","check-in-agents","00000000-0000-0000-0000-000000000000","languages","8a015353-d957-4137-acef-4dc4a6209447"]} }
-		},
-		{
-			"name": "D4 - Move agent to free counter 4",
-			"request": { "method": "PATCH", "url": {"raw":"http://localhost:8080/api/check-in-agents/704c4525-ca9d-44e2-b0dc-35815613d5ef/counter?counterNumber=4","protocol":"http","host":["localhost"],"port":"8080","path":["api","check-in-agents","704c4525-ca9d-44e2-b0dc-35815613d5ef","counter"],"query":[{"key":"counterNumber","value":"4"}]} }
-		},
-		{
-			"name": "D4 - Move agent to occupied counter",
-			"request": { "method": "PATCH", "url": {"raw":"http://localhost:8080/api/check-in-agents/ec4540f4-93ae-434c-9ecd-8be6f1277a43/counter?counterNumber=1","protocol":"http","host":["localhost"],"port":"8080","path":["api","check-in-agents","ec4540f4-93ae-434c-9ecd-8be6f1277a43","counter"],"query":[{"key":"counterNumber","value":"1"}]} }
-		},
-		{
-			"name": "D4 - Move agent unknown counter",
-			"request": { "method": "PATCH", "url": {"raw":"http://localhost:8080/api/check-in-agents/01bacc8e-3ec6-461f-9fbe-2612e11f1a30/counter?counterNumber=99","protocol":"http","host":["localhost"],"port":"8080","path":["api","check-in-agents","01bacc8e-3ec6-461f-9fbe-2612e11f1a30","counter"],"query":[{"key":"counterNumber","value":"99"}]} }
-		}
+		{ "name": "A2 - Save language", "request": { "method": "POST", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\n  \"name\": \"English\"\n}"}, "url": {"raw":"http://localhost:8080/api/languages/save","protocol":"http","host":["localhost"],"port":"8080","path":["api","languages","save"]} } },
+		{ "name": "A2 - GET all languages", "request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/languages/all","protocol":"http","host":["localhost"],"port":"8080","path":["api","languages","all"]} } },
+		{ "name": "A2 - GET language by id", "request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/languages/8a015353-d957-4137-acef-4dc4a6209447","protocol":"http","host":["localhost"],"port":"8080","path":["api","languages","8a015353-d957-4137-acef-4dc4a6209447"]} } },
+		{ "name": "A2 - GET language by unknown id", "request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/languages/00000000-0000-0000-0000-000000000000","protocol":"http","host":["localhost"],"port":"8080","path":["api","languages","00000000-0000-0000-0000-000000000000"]} } },
+		{ "name": "A2 - PUT update language", "request": { "method": "PUT", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\n  \"name\": \"English Updated\"\n}"}, "url": {"raw":"http://localhost:8080/api/languages/update/8a015353-d957-4137-acef-4dc4a6209447","protocol":"http","host":["localhost"],"port":"8080","path":["api","languages","update","8a015353-d957-4137-acef-4dc4a6209447"]} } },
+		{ "name": "A2 - DELETE language unknown id", "request": { "method": "DELETE", "url": {"raw":"http://localhost:8080/api/languages/delete/00000000-0000-0000-0000-000000000000","protocol":"http","host":["localhost"],"port":"8080","path":["api","languages","delete","00000000-0000-0000-0000-000000000000"]} } },
+		{ "name": "A2 - Save counter", "request": { "method": "POST", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\n  \"counterNumber\": 1,\n  \"name\": \"Counter One\"\n}"}, "url": {"raw":"http://localhost:8080/api/counters/save","protocol":"http","host":["localhost"],"port":"8080","path":["api","counters","save"]} } },
+		{ "name": "A2 - GET all counters", "request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/counters/all","protocol":"http","host":["localhost"],"port":"8080","path":["api","counters","all"]} } },
+		{ "name": "A2 - GET counter by id", "request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/counters/80f74262-3281-4a3d-b522-f8348fd1a641","protocol":"http","host":["localhost"],"port":"8080","path":["api","counters","80f74262-3281-4a3d-b522-f8348fd1a641"]} } },
+		{ "name": "A2 - GET counter by unknown id", "request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/counters/00000000-0000-0000-0000-000000000000","protocol":"http","host":["localhost"],"port":"8080","path":["api","counters","00000000-0000-0000-0000-000000000000"]} } },
+		{ "name": "A2 - Save check-in agent", "request": { "method": "POST", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\n  \"firstName\": \"Alice\",\n  \"lastName\": \"Mukamana\",\n  \"staffNumber\": \"SA001\",\n  \"counter\": {\"id\": \"80f74262-3281-4a3d-b522-f8348fd1a641\"}\n}"}, "url": {"raw":"http://localhost:8080/api/check-in-agents/save","protocol":"http","host":["localhost"],"port":"8080","path":["api","check-in-agents","save"]} } },
+		{ "name": "A2 - GET all check-in agents", "request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/check-in-agents/all","protocol":"http","host":["localhost"],"port":"8080","path":["api","check-in-agents","all"]} } },
+		{ "name": "A2 - GET check-in agent by id", "request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/check-in-agents/01bacc8e-3ec6-461f-9fbe-2612e11f1a30","protocol":"http","host":["localhost"],"port":"8080","path":["api","check-in-agents","01bacc8e-3ec6-461f-9fbe-2612e11f1a30"]} } },
+		{ "name": "A2 - GET check-in agent by unknown id", "request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/check-in-agents/00000000-0000-0000-0000-000000000000","protocol":"http","host":["localhost"],"port":"8080","path":["api","check-in-agents","00000000-0000-0000-0000-000000000000"]} } },
+		{ "name": "A2 - Save passenger", "request": { "method": "POST", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\n  \"firstName\": \"Jean\",\n  \"lastName\": \"Niyonzima\",\n  \"passportNumber\": \"PC654321\",\n  \"email\": \"jean@example.com\",\n  \"phone\": \"+250780000001\"\n}"}, "url": {"raw":"http://localhost:8080/api/passengers/save","protocol":"http","host":["localhost"],"port":"8080","path":["api","passengers","save"]} } },
+		{ "name": "A2 - GET all passengers", "request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/passengers/all","protocol":"http","host":["localhost"],"port":"8080","path":["api","passengers","all"]} } },
+		{ "name": "A2 - GET passenger by id", "request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/passengers/f0a26336-44b8-47c2-b5b9-6d1ccaae12bb","protocol":"http","host":["localhost"],"port":"8080","path":["api","passengers","f0a26336-44b8-47c2-b5b9-6d1ccaae12bb"]} } },
+		{ "name": "A2 - GET passenger by unknown id", "request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/passengers/00000000-0000-0000-0000-000000000000","protocol":"http","host":["localhost"],"port":"8080","path":["api","passengers","00000000-0000-0000-0000-000000000000"]} } },
+		{ "name": "A2 - Save flight booking", "request": { "method": "POST", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\n  \"flightDate\": \"2026-12-05\",\n  \"flightNumber\": \"RW999\",\n  \"seatClass\": \"Economy\",\n  \"passenger\": {\"id\": \"38a22723-f127-4900-bdd6-07832b5c743b\"},\n  \"agent\": {\"id\": \"ec4540f4-93ae-434c-9ecd-8be6f1277a43\"}\n}"}, "url": {"raw":"http://localhost:8080/api/flight-bookings/save","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","save"]} } },
+		{ "name": "A2 - GET all flight bookings", "request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/flight-bookings/all","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","all"]} } },
+		{ "name": "A2 - GET flight booking by id", "request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/flight-bookings/e4b8c78d-0dec-46c9-accb-7f49e3875c99","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","e4b8c78d-0dec-46c9-accb-7f49e3875c99"]} } },
+		{ "name": "A2 - GET flight booking by unknown id", "request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/flight-bookings/00000000-0000-0000-0000-000000000000","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","00000000-0000-0000-0000-000000000000"]} } },
+		{ "name": "A2 - PUT update flight booking", "request": { "method": "PUT", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\n  \"flightDate\": \"2026-11-25\",\n  \"flightNumber\": \"RW110-UPD\",\n  \"seatClass\": \"Business\",\n  \"passenger\": {\"id\": \"092502c2-e5c6-4a4d-aab1-e68272055a9c\"},\n  \"agent\": {\"id\": \"704c4525-ca9d-44e2-b0dc-35815613d5ef\"}\n}"}, "url": {"raw":"http://localhost:8080/api/flight-bookings/update/dd3c401c-cb64-41aa-ae97-ea61e76c09ff","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","update","dd3c401c-cb64-41aa-ae97-ea61e76c09ff"]} } },
+		{ "name": "A2 - DELETE flight booking unknown id", "request": { "method": "DELETE", "url": {"raw":"http://localhost:8080/api/flight-bookings/delete/00000000-0000-0000-0000-000000000000","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","delete","00000000-0000-0000-0000-000000000000"]} } },
+		{ "name": "B1 - Passengers by lastName niyonzima", "request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/passengers/by-last-name?lastName=niyonzima","protocol":"http","host":["localhost"],"port":"8080","path":["api","passengers","by-last-name"],"query":[{"key":"lastName","value":"niyonzima"}]} } },
+		{ "name": "B1 - Passengers by lastName no match", "request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/passengers/by-last-name?lastName=ZZZNOMATCH","protocol":"http","host":["localhost"],"port":"8080","path":["api","passengers","by-last-name"],"query":[{"key":"lastName","value":"ZZZNOMATCH"}]} } },
+		{ "name": "B2 - Flight bookings by status BOOKED", "request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/flight-bookings/by-status?status=BOOKED","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","by-status"],"query":[{"key":"status","value":"BOOKED"}]} } },
+		{ "name": "B2 - Flight bookings by status CHECKED_IN", "request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/flight-bookings/by-status?status=CHECKED_IN","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","by-status"],"query":[{"key":"status","value":"CHECKED_IN"}]} } },
+		{ "name": "B3 - Bookings between 2026-10-01 and 2026-10-31", "request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/flight-bookings/between?start=2026-10-01&end=2026-10-31","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","between"],"query":[{"key":"start","value":"2026-10-01"},{"key":"end","value":"2026-10-31"}]} } },
+		{ "name": "B3 - Bookings between 2026-11-01 and 2026-11-30", "request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/flight-bookings/between?start=2026-11-01&end=2026-11-30","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","between"],"query":[{"key":"start","value":"2026-11-01"},{"key":"end","value":"2026-11-30"}]} } },
+		{ "name": "C1 - Check-in agents by language french", "request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/check-in-agents/by-language?name=french","protocol":"http","host":["localhost"],"port":"8080","path":["api","check-in-agents","by-language"],"query":[{"key":"name","value":"french"}]} } },
+		{ "name": "C1 - Check-in agents by language ENGLISH", "request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/check-in-agents/by-language?name=ENGLISH","protocol":"http","host":["localhost"],"port":"8080","path":["api","check-in-agents","by-language"],"query":[{"key":"name","value":"ENGLISH"}]} } },
+		{ "name": "C2 - Free counters", "request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/counters/free","protocol":"http","host":["localhost"],"port":"8080","path":["api","counters","free"]} } },
+		{ "name": "C3 - Unused languages", "request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/languages/unused","protocol":"http","host":["localhost"],"port":"8080","path":["api","languages","unused"]} } },
+		{ "name": "C4 - Passengers of check-in agent", "request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/passengers/of-check-in-agent/01bacc8e-3ec6-461f-9fbe-2612e11f1a30","protocol":"http","host":["localhost"],"port":"8080","path":["api","passengers","of-check-in-agent","01bacc8e-3ec6-461f-9fbe-2612e11f1a30"]} } },
+		{ "name": "C4 - Passengers of check-in agent unknown id", "request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/passengers/of-check-in-agent/00000000-0000-0000-0000-000000000000","protocol":"http","host":["localhost"],"port":"8080","path":["api","passengers","of-check-in-agent","00000000-0000-0000-0000-000000000000"]} } },
+		{ "name": "D1 - Save booking past date", "request": { "method": "POST", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\n  \"flightDate\": \"2025-01-01\",\n  \"flightNumber\": \"RW000\",\n  \"seatClass\": \"Economy\",\n  \"passenger\": {\"id\": \"38a22723-f127-4900-bdd6-07832b5c743b\"},\n  \"agent\": {\"id\": \"ec4540f4-93ae-434c-9ecd-8be6f1277a43\"}\n}"}, "url": {"raw":"http://localhost:8080/api/flight-bookings/save","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","save"]} } },
+		{ "name": "D1 - Save booking agent conflict same date", "request": { "method": "POST", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\n  \"flightDate\": \"2026-11-01\",\n  \"flightNumber\": \"RW-CONFLICT\",\n  \"seatClass\": \"Economy\",\n  \"passenger\": {\"id\": \"38a22723-f127-4900-bdd6-07832b5c743b\"},\n  \"agent\": {\"id\": \"01bacc8e-3ec6-461f-9fbe-2612e11f1a30\"}\n}"}, "url": {"raw":"http://localhost:8080/api/flight-bookings/save","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","save"]} } },
+		{ "name": "D2 - Change status BOOKED to PAID", "request": { "method": "PATCH", "url": {"raw":"http://localhost:8080/api/flight-bookings/8af8b93d-0fec-4e40-93a0-84f948090050/status?status=PAID","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","8af8b93d-0fec-4e40-93a0-84f948090050","status"],"query":[{"key":"status","value":"PAID"}]} } },
+		{ "name": "D2 - Change status invalid transition CHECKED_IN to BOOKED", "request": { "method": "PATCH", "url": {"raw":"http://localhost:8080/api/flight-bookings/e4b8c78d-0dec-46c9-accb-7f49e3875c99/status?status=BOOKED","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","e4b8c78d-0dec-46c9-accb-7f49e3875c99","status"],"query":[{"key":"status","value":"BOOKED"}]} } },
+		{ "name": "D2 - Change status unknown id", "request": { "method": "PATCH", "url": {"raw":"http://localhost:8080/api/flight-bookings/00000000-0000-0000-0000-000000000000/status?status=PAID","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","00000000-0000-0000-0000-000000000000","status"],"query":[{"key":"status","value":"PAID"}]} } },
+		{ "name": "D3 - Add language to agent", "request": { "method": "PUT", "url": {"raw":"http://localhost:8080/api/check-in-agents/ec4540f4-93ae-434c-9ecd-8be6f1277a43/languages/251eabf5-f915-4c59-a673-0410770b9f4f","protocol":"http","host":["localhost"],"port":"8080","path":["api","check-in-agents","ec4540f4-93ae-434c-9ecd-8be6f1277a43","languages","251eabf5-f915-4c59-a673-0410770b9f4f"]} } },
+		{ "name": "D3 - Add language agent already has it", "request": { "method": "PUT", "url": {"raw":"http://localhost:8080/api/check-in-agents/01bacc8e-3ec6-461f-9fbe-2612e11f1a30/languages/8a015353-d957-4137-acef-4dc4a6209447","protocol":"http","host":["localhost"],"port":"8080","path":["api","check-in-agents","01bacc8e-3ec6-461f-9fbe-2612e11f1a30","languages","8a015353-d957-4137-acef-4dc4a6209447"]} } },
+		{ "name": "D3 - Add language agent not found", "request": { "method": "PUT", "url": {"raw":"http://localhost:8080/api/check-in-agents/00000000-0000-0000-0000-000000000000/languages/8a015353-d957-4137-acef-4dc4a6209447","protocol":"http","host":["localhost"],"port":"8080","path":["api","check-in-agents","00000000-0000-0000-0000-000000000000","languages","8a015353-d957-4137-acef-4dc4a6209447"]} } },
+		{ "name": "D4 - Move agent to free counter 4", "request": { "method": "PATCH", "url": {"raw":"http://localhost:8080/api/check-in-agents/704c4525-ca9d-44e2-b0dc-35815613d5ef/counter?counterNumber=4","protocol":"http","host":["localhost"],"port":"8080","path":["api","check-in-agents","704c4525-ca9d-44e2-b0dc-35815613d5ef","counter"],"query":[{"key":"counterNumber","value":"4"}]} } },
+		{ "name": "D4 - Move agent to occupied counter", "request": { "method": "PATCH", "url": {"raw":"http://localhost:8080/api/check-in-agents/ec4540f4-93ae-434c-9ecd-8be6f1277a43/counter?counterNumber=1","protocol":"http","host":["localhost"],"port":"8080","path":["api","check-in-agents","ec4540f4-93ae-434c-9ecd-8be6f1277a43","counter"],"query":[{"key":"counterNumber","value":"1"}]} } },
+		{ "name": "D4 - Move agent unknown counter", "request": { "method": "PATCH", "url": {"raw":"http://localhost:8080/api/check-in-agents/01bacc8e-3ec6-461f-9fbe-2612e11f1a30/counter?counterNumber=99","protocol":"http","host":["localhost"],"port":"8080","path":["api","check-in-agents","01bacc8e-3ec6-461f-9fbe-2612e11f1a30","counter"],"query":[{"key":"counterNumber","value":"99"}]} } },
+		{ "name": "E1 - Save baggage item for CHECKED_IN booking", "request": { "method": "POST", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\n  \"baggageType\": \"Checked bag\",\n  \"description\": \"Black suitcase\",\n  \"weightKg\": 18\n}"}, "url": {"raw":"http://localhost:8080/api/baggage-items/save?flightBookingId=e4b8c78d-0dec-46c9-accb-7f49e3875c99","protocol":"http","host":["localhost"],"port":"8080","path":["api","baggage-items","save"],"query":[{"key":"flightBookingId","value":"e4b8c78d-0dec-46c9-accb-7f49e3875c99"}]} } },
+		{ "name": "E1 - Save baggage item booking not CHECKED_IN", "request": { "method": "POST", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\n  \"baggageType\": \"Checked bag\",\n  \"description\": \"Red bag\",\n  \"weightKg\": 10\n}"}, "url": {"raw":"http://localhost:8080/api/baggage-items/save?flightBookingId=8af8b93d-0fec-4e40-93a0-84f948090050","protocol":"http","host":["localhost"],"port":"8080","path":["api","baggage-items","save"],"query":[{"key":"flightBookingId","value":"8af8b93d-0fec-4e40-93a0-84f948090050"}]} } },
+		{ "name": "E1 - Save baggage item booking not found", "request": { "method": "POST", "header": [{"key":"Content-Type","value":"application/json"}], "body": {"mode":"raw","raw":"{\n  \"baggageType\": \"Checked bag\",\n  \"description\": \"Blue bag\",\n  \"weightKg\": 12\n}"}, "url": {"raw":"http://localhost:8080/api/baggage-items/save?flightBookingId=00000000-0000-0000-0000-000000000000","protocol":"http","host":["localhost"],"port":"8080","path":["api","baggage-items","save"],"query":[{"key":"flightBookingId","value":"00000000-0000-0000-0000-000000000000"}]} } },
+		{ "name": "E2 - Baggage history passport PC654321", "request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/baggage-items/passenger/PC654321","protocol":"http","host":["localhost"],"port":"8080","path":["api","baggage-items","passenger","PC654321"]} } },
+		{ "name": "E2 - Baggage history passport PC333333 no items", "request": { "method": "GET", "url": {"raw":"http://localhost:8080/api/baggage-items/passenger/PC333333","protocol":"http","host":["localhost"],"port":"8080","path":["api","baggage-items","passenger","PC333333"]} } },
+		{ "name": "E3 - DELETE baggage item not found", "request": { "method": "DELETE", "url": {"raw":"http://localhost:8080/api/baggage-items/delete/00000000-0000-0000-0000-000000000000","protocol":"http","host":["localhost"],"port":"8080","path":["api","baggage-items","delete","00000000-0000-0000-0000-000000000000"]} } },
+		{ "name": "E3 - DELETE flight booking that has baggage items", "request": { "method": "DELETE", "url": {"raw":"http://localhost:8080/api/flight-bookings/delete/e4b8c78d-0dec-46c9-accb-7f49e3875c99","protocol":"http","host":["localhost"],"port":"8080","path":["api","flight-bookings","delete","e4b8c78d-0dec-46c9-accb-7f49e3875c99"]} } }
 	]
 }
